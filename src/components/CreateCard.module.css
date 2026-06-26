@@ -1,0 +1,172 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formSide, .previewSide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.saveBtn {
+  background: linear-gradient(135deg, #f857a6, #ff5858);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 4px 20px rgba(248, 87, 166, 0.4);
+}
+
+.saveBtn:hover:not(:disabled) {
+  box-shadow: 0 6px 28px rgba(248, 87, 166, 0.6);
+  transform: translateY(-2px);
+}
+
+.saveBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.saved {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4) !important;
+}
+
+/* ── Card preview ── */
+.cardPreview {
+  border-radius: 20px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 360px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transition: all 0.3s;
+}
+
+.rare {
+  animation: rareGlow 2.5s ease-in-out infinite;
+}
+
+.ultra {
+  animation: ultraGlow 2s ease-in-out infinite;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardName {
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #fff;
+  word-break: break-word;
+}
+
+.cardHp {
+  font-weight: 900;
+  color: #ffd700;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.artArea {
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 120px;
+  justify-content: center;
+}
+
+.artPlaceholder {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.typePill {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.cardDesc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  font-style: italic;
+  text-align: center;
+  min-height: 40px;
+}
+
+.attackRow {
+  background: rgba(0,0,0,0.35);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attackName {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.attackDmg {
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: #ffd700;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rarityTag {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

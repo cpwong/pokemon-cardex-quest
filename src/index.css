@@ -1,0 +1,99 @@
+/* Global reset and base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #0f0c29;
+  --color-surface: #1a1740;
+  --color-card: #231f52;
+  --color-border: #3a3570;
+  --color-primary: #f857a6;
+  --color-secondary: #ff5858;
+  --color-accent: #ffd700;
+  --color-text: #f0eaff;
+  --color-muted: #9b96c8;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+body {
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  background: #12103a;
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-primary);
+}
+
+select option {
+  background: #1a1740;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-muted);
+  margin-bottom: 5px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Glow animation for rare cards */
+@keyframes rareGlow {
+  0%, 100% { box-shadow: 0 0 10px #a855f7, 0 0 20px #7c3aed, 0 0 40px #6d28d9; }
+  50%       { box-shadow: 0 0 20px #c084fc, 0 0 40px #a855f7, 0 0 80px #7c3aed; }
+}
+
+@keyframes ultraGlow {
+  0%, 100% { box-shadow: 0 0 15px #fbbf24, 0 0 30px #f59e0b, 0 0 60px #d97706; }
+  50%       { box-shadow: 0 0 30px #fcd34d, 0 0 60px #fbbf24, 0 0 100px #f59e0b; }
+}
+
+@keyframes flipIn {
+  0%   { transform: rotateY(90deg) scale(0.8); opacity: 0; }
+  60%  { transform: rotateY(-10deg) scale(1.05); }
+  100% { transform: rotateY(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}

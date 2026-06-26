@@ -1,0 +1,68 @@
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.header {
+  text-align: center;
+  padding: 28px 0 12px;
+}
+
+.logo {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #f857a6, #ffd700, #ff5858);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.tagline {
+  color: var(--color-muted);
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 8px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.tab {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px 8px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  background: rgba(248, 87, 166, 0.15);
+  color: var(--color-text);
+}
+
+.tabActive {
+  background: linear-gradient(135deg, #f857a6, #ff5858);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(248, 87, 166, 0.4);
+}
+
+.content {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  min-height: 400px;
+}

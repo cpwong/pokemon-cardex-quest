@@ -1,0 +1,131 @@
+.tile {
+  background: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+  animation: popIn 0.35s ease both;
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+}
+
+/* Purple glow for Rare */
+.rare {
+  border-color: #7c3aed;
+  animation: popIn 0.35s ease both, rareGlow 2.5s ease-in-out infinite;
+}
+
+/* Gold glow for Ultra Rare */
+.ultra {
+  border-color: #f59e0b;
+  animation: popIn 0.35s ease both, ultraGlow 2s ease-in-out infinite;
+}
+
+.header {
+  padding: 14px 12px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #fff;
+  flex: 1;
+  word-break: break-word;
+}
+
+.hp {
+  font-weight: 900;
+  font-size: 0.9rem;
+  color: #ffd700;
+  white-space: nowrap;
+}
+
+.typeBadge {
+  align-self: flex-start;
+  margin: 0 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.stats {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.statLabel {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.qty {
+  font-weight: 800;
+  color: var(--color-accent);
+  font-size: 1rem;
+}
+
+.favStar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.favBtn, .removeBtn {
+  flex: 1;
+  padding: 7px 6px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.favBtn {
+  background: rgba(255, 215, 0, 0.15);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.favBtn:hover {
+  background: rgba(255, 215, 0, 0.3);
+}
+
+.removeBtn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.removeBtn:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
