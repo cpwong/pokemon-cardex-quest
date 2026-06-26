@@ -18,6 +18,8 @@ export default function App() {
 
   return (
     <div className={styles.app}>
+      {/* Full-screen rainbow background glow — sits behind everything */}
+      <div className={styles.bgGlow} aria-hidden="true" />
       <header className={styles.header}>
         <h1 className={styles.logo}>CardDex Quest</h1>
         <p className={styles.tagline}>Your ultimate card collection!</p>
