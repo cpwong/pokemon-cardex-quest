@@ -77,8 +77,7 @@
 /* Accessibility: hold everything still for users who prefer reduced motion,
    but keep a static sheen + sparkles so the card still looks special. */
 @media (prefers-reduced-motion: reduce) {
-  .rare { animation: none; }
-  .ultra { animation: popIn 0.35s ease both; }
+  .tile, .rare, .ultra { animation: none; }
   .holo::before { animation: none; transform: translateX(60%) rotate(8deg); }
   .spark { animation: none; opacity: 0.9; }
 }
@@ -86,6 +85,11 @@
 /* Keyframes live here (not in global index.css) because CSS Modules hashes
    animation-name references — keeping them in the same file keeps them matched.
    --foil-angle itself is registered globally via @property in index.css. */
+@keyframes popIn {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
 @keyframes rareGlow {
   0%, 100% { box-shadow: 0 0 10px #a855f7, 0 0 20px #7c3aed, 0 0 40px #6d28d9; }
   50%      { box-shadow: 0 0 20px #c084fc, 0 0 40px #a855f7, 0 0 80px #7c3aed; }

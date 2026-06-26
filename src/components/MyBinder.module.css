@@ -116,6 +116,18 @@
   font-size: 0.875rem;
 }
 
+/* Defined locally (not in global index.css) so CSS Modules' hashed
+   animation-name reference resolves. The add-card form pops in when opened. */
+@keyframes popIn {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form { animation: none; }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

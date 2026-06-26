@@ -70,26 +70,11 @@ label {
   letter-spacing: 0.05em;
 }
 
-/* Note: rare/ultra glow keyframes now live in the card components' module CSS,
-   because CSS Modules hashes animation-name references and a global keyframe
-   here would never match. See CardTile.module.css / CreateCard.module.css. */
-
-@keyframes flipIn {
-  0%   { transform: rotateY(90deg) scale(0.8); opacity: 0; }
-  60%  { transform: rotateY(-10deg) scale(1.05); }
-  100% { transform: rotateY(0deg) scale(1); opacity: 1; }
-}
-
-@keyframes popIn {
-  0%   { transform: scale(0.5); opacity: 0; }
-  70%  { transform: scale(1.1); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
-}
+/* Note: keyframes are defined inside each *.module.css that uses them, NOT here.
+   CSS Modules hashes animation-name references (e.g. popIn -> _popIn_xxx), so a
+   global @keyframes in this file would never match a module's reference and the
+   animation silently wouldn't run. The only animation-related thing that stays
+   global is the @property below — custom-property names aren't scoped. */
 
 /* Registering --foil-angle as a real angle lets us animate the conic-gradient
    foil border on Ultra Rare cards. Plain custom properties can't be animated;

@@ -66,3 +66,14 @@
   box-shadow: var(--shadow);
   min-height: 400px;
 }
+
+/* Defined locally (not in global index.css) so CSS Modules' hashed
+   animation-name reference resolves. The logo gently bobs. */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo { animation: none; }
+}
