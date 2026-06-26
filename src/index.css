@@ -70,15 +70,22 @@ label {
   letter-spacing: 0.05em;
 }
 
-/* Glow animation for rare cards */
+/* Glow animation for rare cards — light blue pulse */
 @keyframes rareGlow {
-  0%, 100% { box-shadow: 0 0 10px #a855f7, 0 0 20px #7c3aed, 0 0 40px #6d28d9; }
-  50%       { box-shadow: 0 0 20px #c084fc, 0 0 40px #a855f7, 0 0 80px #7c3aed; }
+  0%, 100% { box-shadow: 0 0 10px #7dd3fc, 0 0 22px #38bdf8, 0 0 44px #0ea5e9; }
+  50%       { box-shadow: 0 0 20px #bae6fd, 0 0 44px #7dd3fc, 0 0 80px #38bdf8; }
 }
 
+/* Ultra Rare — continuous rainbow colour cycle on the glow and border */
 @keyframes ultraGlow {
-  0%, 100% { box-shadow: 0 0 15px #fbbf24, 0 0 30px #f59e0b, 0 0 60px #d97706; }
-  50%       { box-shadow: 0 0 30px #fcd34d, 0 0 60px #fbbf24, 0 0 100px #f59e0b; }
+  0%   { box-shadow: 0 0 18px #ff4d4d, 0 0 45px #ff0000; border-color: #ff4d4d; }
+  14%  { box-shadow: 0 0 18px #ff9933, 0 0 45px #ff6600; border-color: #ff9933; }
+  28%  { box-shadow: 0 0 18px #ffe033, 0 0 45px #ffcc00; border-color: #ffe033; }
+  42%  { box-shadow: 0 0 18px #44dd44, 0 0 45px #00bb00; border-color: #44dd44; }
+  57%  { box-shadow: 0 0 18px #44aaff, 0 0 45px #0077ff; border-color: #44aaff; }
+  71%  { box-shadow: 0 0 18px #9966ff, 0 0 45px #6600ff; border-color: #9966ff; }
+  85%  { box-shadow: 0 0 18px #ff44cc, 0 0 45px #ff0099; border-color: #ff44cc; }
+  100% { box-shadow: 0 0 18px #ff4d4d, 0 0 45px #ff0000; border-color: #ff4d4d; }
 }
 
 @keyframes flipIn {

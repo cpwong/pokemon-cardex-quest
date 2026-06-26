@@ -14,16 +14,15 @@
   transform: translateY(-4px);
 }
 
-/* Purple glow for Rare */
+/* Light blue glow for Rare */
 .rare {
-  border-color: #7c3aed;
+  border-color: #38bdf8;
   animation: popIn 0.35s ease both, rareGlow 2.5s ease-in-out infinite;
 }
 
-/* Gold glow for Ultra Rare */
+/* Rainbow cycle for Ultra Rare — border-color is driven by the keyframes */
 .ultra {
-  border-color: #f59e0b;
-  animation: popIn 0.35s ease both, ultraGlow 2s ease-in-out infinite;
+  animation: popIn 0.35s ease both, ultraGlow 3s linear infinite;
 }
 
 .header {

@@ -77,7 +77,7 @@
 }
 
 .ultra {
-  animation: ultraGlow 2s ease-in-out infinite;
+  animation: ultraGlow 3s linear infinite;
 }
 
 .cardHeader {
