@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import CardTile from './CardTile.jsx'
+import CardScanner from './CardScanner.jsx'
 import styles from './MyBinder.module.css'
 
 const TYPES = ['Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Rock', 'Ice', 'Dragon', 'Dark', 'Normal']
@@ -17,6 +18,7 @@ export default function MyBinder({ binder, setBinder }) {
   const [filterType, setFilterType] = useState('All')
   const [filterRarity, setFilterRarity] = useState('All')
   const [showForm, setShowForm] = useState(false)
+  const [showScanner, setShowScanner] = useState(false)
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target
@@ -32,6 +34,10 @@ export default function MyBinder({ binder, setBinder }) {
     ])
     setForm(EMPTY_FORM)
     setShowForm(false)
+  }
+
+  function addScannedCard(card) {
+    setBinder(prev => [...prev, card])
   }
 
   function removeCard(id) {
@@ -57,10 +63,23 @@ export default function MyBinder({ binder, setBinder }) {
           <span className={styles.countBadge}>{binder.length} cards</span>
           <span className={styles.countBadge}>⭐ {binder.filter(c => c.favorite).length} faves</span>
         </div>
-        <button className={styles.addBtn} onClick={() => setShowForm(v => !v)}>
-          {showForm ? '✕ Cancel' : '+ Add Card'}
-        </button>
+        <div className={styles.topActions}>
+          <button className={styles.scanBtn} onClick={() => setShowScanner(true)}>
+            📷 Scan
+          </button>
+          <button className={styles.addBtn} onClick={() => setShowForm(v => !v)}>
+            {showForm ? '✕ Cancel' : '+ Add Card'}
+          </button>
+        </div>
       </div>
+
+      {/* Camera scanner modal */}
+      {showScanner && (
+        <CardScanner
+          onAddToBinder={addScannedCard}
+          onClose={() => setShowScanner(false)}
+        />
+      )}
 
       {/* Add card form */}
       {showForm && (
