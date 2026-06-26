@@ -70,16 +70,9 @@ label {
   letter-spacing: 0.05em;
 }
 
-/* Glow animation for rare cards */
-@keyframes rareGlow {
-  0%, 100% { box-shadow: 0 0 10px #a855f7, 0 0 20px #7c3aed, 0 0 40px #6d28d9; }
-  50%       { box-shadow: 0 0 20px #c084fc, 0 0 40px #a855f7, 0 0 80px #7c3aed; }
-}
-
-@keyframes ultraGlow {
-  0%, 100% { box-shadow: 0 0 15px #fbbf24, 0 0 30px #f59e0b, 0 0 60px #d97706; }
-  50%       { box-shadow: 0 0 30px #fcd34d, 0 0 60px #fbbf24, 0 0 100px #f59e0b; }
-}
+/* Note: rare/ultra glow keyframes now live in the card components' module CSS,
+   because CSS Modules hashes animation-name references and a global keyframe
+   here would never match. See CardTile.module.css / CreateCard.module.css. */
 
 @keyframes flipIn {
   0%   { transform: rotateY(90deg) scale(0.8); opacity: 0; }
@@ -96,4 +89,15 @@ label {
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-6px); }
+}
+
+/* Registering --foil-angle as a real angle lets us animate the conic-gradient
+   foil border on Ultra Rare cards. Plain custom properties can't be animated;
+   @property ones can. Kept global here (custom-property names aren't scoped by
+   CSS Modules); the keyframes that drive it live in the card components' module
+   CSS so their animation-name survives CSS-Modules localization. */
+@property --foil-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
 }

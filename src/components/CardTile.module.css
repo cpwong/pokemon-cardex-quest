@@ -20,10 +20,86 @@
   animation: popIn 0.35s ease both, rareGlow 2.5s ease-in-out infinite;
 }
 
-/* Gold glow for Ultra Rare */
+/* Ultra Rare "combo": rotating rainbow foil border + steady gold aura.
+   The two-layer background paints the card color inside the border (padding-box)
+   and the spinning conic-gradient on the border itself (border-box). */
 .ultra {
-  border-color: #f59e0b;
-  animation: popIn 0.35s ease both, ultraGlow 2s ease-in-out infinite;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--color-card), var(--color-card)) padding-box,
+    conic-gradient(from var(--foil-angle), #fcd34d, #f857a6, #60a5fa, #22c55e, #fcd34d) border-box;
+  box-shadow: 0 0 26px rgba(245, 158, 11, 0.55);
+  animation: popIn 0.35s ease both, foilRotate 5s linear infinite;
+}
+
+/* Holo sheen — a light streak that sweeps across the card.
+   Clipped to the card by overflow:hidden; color-dodge makes it shimmer. */
+.holo {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.holo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 55%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.7) 47%,
+    rgba(170, 215, 255, 0.6) 53%,
+    transparent 70%
+  );
+  mix-blend-mode: color-dodge;
+  animation: holoSweep 2.8s ease-in-out infinite;
+}
+
+/* Twinkling sparkles at the corners */
+.spark {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px #fcd34d);
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+.s1 { top: 6px;    left: 8px;   font-size: 1rem;    animation-delay: 0s; }
+.s2 { top: 42%;    right: 8px;  font-size: 0.8rem;  animation-delay: 0.5s; }
+.s3 { bottom: 10px; left: 14px; font-size: 1.15rem; animation-delay: 1s; }
+.s4 { bottom: 34%; right: 18px; font-size: 0.9rem;  animation-delay: 1.4s; }
+
+/* Accessibility: hold everything still for users who prefer reduced motion,
+   but keep a static sheen + sparkles so the card still looks special. */
+@media (prefers-reduced-motion: reduce) {
+  .rare { animation: none; }
+  .ultra { animation: popIn 0.35s ease both; }
+  .holo::before { animation: none; transform: translateX(60%) rotate(8deg); }
+  .spark { animation: none; opacity: 0.9; }
+}
+
+/* Keyframes live here (not in global index.css) because CSS Modules hashes
+   animation-name references — keeping them in the same file keeps them matched.
+   --foil-angle itself is registered globally via @property in index.css. */
+@keyframes rareGlow {
+  0%, 100% { box-shadow: 0 0 10px #a855f7, 0 0 20px #7c3aed, 0 0 40px #6d28d9; }
+  50%      { box-shadow: 0 0 20px #c084fc, 0 0 40px #a855f7, 0 0 80px #7c3aed; }
+}
+@keyframes foilRotate {
+  to { --foil-angle: 360deg; }
+}
+@keyframes holoSweep {
+  0%   { transform: translateX(-130%) rotate(8deg); }
+  100% { transform: translateX(240%) rotate(8deg); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  50%       { opacity: 1; transform: scale(1); }
 }
 
 .header {
