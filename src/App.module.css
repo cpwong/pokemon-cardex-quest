@@ -1,25 +1,15 @@
-/* Rainbow keyframes — defined here so the module scopes them together with .bgGlow */
+/* hue-rotate(0 → 360deg) smoothly cycles through every rainbow hue.
+   The gradient is baked in as the background shape; no mask-image needed
+   (mask-image on position:fixed is broken in Safari). */
 @keyframes bgRainbow {
-  0%   { background-color: #ff2255; }
-  14%  { background-color: #ff8800; }
-  28%  { background-color: #ffe000; }
-  42%  { background-color: #00ff88; }
-  57%  { background-color: #00aaff; }
-  71%  { background-color: #aa44ff; }
-  85%  { background-color: #ff44cc; }
-  100% { background-color: #ff2255; }
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
 }
 
-/* Full-screen glow layer behind all content.
-   background-color can be smoothly interpolated, so we animate that
-   and use a mask to shape it into a soft radial bloom. */
 .bgGlow {
   position: fixed;
   inset: 0;
-  background-color: #ff2255;
-  -webkit-mask-image: radial-gradient(ellipse 100% 70% at 50% 42%, black 0%, transparent 68%);
-  mask-image:        radial-gradient(ellipse 100% 70% at 50% 42%, black 0%, transparent 68%);
-  opacity: 0.13;
+  background: radial-gradient(ellipse 100% 65% at 50% 42%, rgba(255, 34, 85, 0.18) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
   animation: bgRainbow 4s linear infinite;

@@ -17,9 +17,10 @@ export default function App() {
   }
 
   return (
-    <div className={styles.app}>
-      {/* Full-screen rainbow background glow — sits behind everything */}
+    <>
+      {/* Fixed glow layer lives outside .app so it has no stacking-context parent */}
       <div className={styles.bgGlow} aria-hidden="true" />
+      <div className={styles.app}>
       <header className={styles.header}>
         <h1 className={styles.logo}>CardDex Quest</h1>
         <p className={styles.tagline}>Your ultimate card collection!</p>
@@ -44,6 +45,7 @@ export default function App() {
         {activeTab === 1 && <OpenPack onAddToBinder={addCardToBinder} />}
         {activeTab === 2 && <CreateCard onSaveToBinder={addCardToBinder} />}
       </main>
-    </div>
+      </div>
+    </>
   )
 }
