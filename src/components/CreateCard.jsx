@@ -56,6 +56,19 @@ export default function CreateCard({ onSaveToBinder }) {
   const isRare = form.rarity === 'Rare'
   const isUltra = form.rarity === 'Ultra Rare'
 
+  const typeGradient = TYPE_GRADIENTS[form.type] || TYPE_GRADIENTS.Normal
+  // Ultra Rare gets a rotating rainbow foil border: keep the type gradient
+  // inside (padding-box) and spin a conic-gradient on the border (border-box).
+  const previewStyle = isUltra
+    ? {
+        background: `${typeGradient} padding-box, conic-gradient(from var(--foil-angle), #fcd34d, #f857a6, #60a5fa, #22c55e, #fcd34d) border-box`,
+        border: '3px solid transparent',
+      }
+    : {
+        background: typeGradient,
+        border: RARITY_BORDER[form.rarity],
+      }
+
   return (
     <div className={styles.page}>
       {/* Left: Form */}
@@ -122,11 +135,19 @@ export default function CreateCard({ onSaveToBinder }) {
         <h2 className={styles.title}>Preview</h2>
         <div
           className={`${styles.cardPreview} ${isRare ? styles.rare : ''} ${isUltra ? styles.ultra : ''}`}
-          style={{
-            background: TYPE_GRADIENTS[form.type] || TYPE_GRADIENTS.Normal,
-            border: RARITY_BORDER[form.rarity],
-          }}
+          style={previewStyle}
         >
+          {/* Ultra Rare flair: holo sheen sweep + twinkling sparkles */}
+          {isUltra && (
+            <>
+              <div className={styles.holo} />
+              <span className={`${styles.spark} ${styles.s1}`}>✨</span>
+              <span className={`${styles.spark} ${styles.s2}`}>⭐</span>
+              <span className={`${styles.spark} ${styles.s3}`}>✨</span>
+              <span className={`${styles.spark} ${styles.s4}`}>💫</span>
+            </>
+          )}
+
           {/* Card header */}
           <div className={styles.cardHeader}>
             <span className={styles.cardName}>{form.name || 'Your Card'}</span>

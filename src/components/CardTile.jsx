@@ -35,6 +35,17 @@ export default function CardTile({ card, onRemove, onToggleFavorite }) {
       {/* Favorite star */}
       {card.favorite && <span className={styles.favStar}>⭐</span>}
 
+      {/* Ultra Rare flair: holo sheen sweep + twinkling sparkles */}
+      {isUltra && (
+        <>
+          <div className={styles.holo} />
+          <span className={`${styles.spark} ${styles.s1}`}>✨</span>
+          <span className={`${styles.spark} ${styles.s2}`}>⭐</span>
+          <span className={`${styles.spark} ${styles.s3}`}>✨</span>
+          <span className={`${styles.spark} ${styles.s4}`}>💫</span>
+        </>
+      )}
+
       {/* Card header area */}
       <div className={styles.header} style={{ background: type.bg }}>
         <span className={styles.name}>{card.name || 'Unnamed'}</span>
