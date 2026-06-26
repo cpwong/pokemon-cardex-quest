@@ -20,9 +20,10 @@
   animation: popIn 0.35s ease both, rareGlow 2.5s ease-in-out infinite;
 }
 
-/* Rainbow cycle for Ultra Rare — border-color is driven by the keyframes */
+/* Rainbow cycle for Ultra Rare */
 .ultra {
-  animation: popIn 0.35s ease both, ultraGlow 3s linear infinite;
+  border-color: #ff2255; /* matches keyframe 0% so Safari starts correctly */
+  animation: popIn 0.35s ease both, ultraGlow 4s linear infinite;
 }
 
 .header {

@@ -77,7 +77,8 @@
 }
 
 .ultra {
-  animation: ultraGlow 3s linear infinite;
+  border-color: #ff2255;
+  animation: ultraGlow 4s linear infinite;
 }
 
 .cardHeader {

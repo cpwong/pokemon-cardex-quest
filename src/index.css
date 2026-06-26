@@ -76,16 +76,16 @@ label {
   50%       { box-shadow: 0 0 20px #bae6fd, 0 0 44px #7dd3fc, 0 0 80px #38bdf8; }
 }
 
-/* Ultra Rare — continuous rainbow colour cycle on the glow and border */
+/* Ultra Rare — continuous rainbow colour cycle */
 @keyframes ultraGlow {
-  0%   { box-shadow: 0 0 18px #ff4d4d, 0 0 45px #ff0000; border-color: #ff4d4d; }
-  14%  { box-shadow: 0 0 18px #ff9933, 0 0 45px #ff6600; border-color: #ff9933; }
-  28%  { box-shadow: 0 0 18px #ffe033, 0 0 45px #ffcc00; border-color: #ffe033; }
-  42%  { box-shadow: 0 0 18px #44dd44, 0 0 45px #00bb00; border-color: #44dd44; }
-  57%  { box-shadow: 0 0 18px #44aaff, 0 0 45px #0077ff; border-color: #44aaff; }
-  71%  { box-shadow: 0 0 18px #9966ff, 0 0 45px #6600ff; border-color: #9966ff; }
-  85%  { box-shadow: 0 0 18px #ff44cc, 0 0 45px #ff0099; border-color: #ff44cc; }
-  100% { box-shadow: 0 0 18px #ff4d4d, 0 0 45px #ff0000; border-color: #ff4d4d; }
+  0%   { box-shadow: 0 0 12px 4px #ff2255, 0 0 30px 8px #ff2255, 0 0 60px 10px rgba(255,34,85,0.4);   border-color: #ff2255; }
+  14%  { box-shadow: 0 0 12px 4px #ff8800, 0 0 30px 8px #ff8800, 0 0 60px 10px rgba(255,136,0,0.4);   border-color: #ff8800; }
+  28%  { box-shadow: 0 0 12px 4px #ffe000, 0 0 30px 8px #ffe000, 0 0 60px 10px rgba(255,224,0,0.4);   border-color: #ffe000; }
+  42%  { box-shadow: 0 0 12px 4px #00ff88, 0 0 30px 8px #00ff88, 0 0 60px 10px rgba(0,255,136,0.4);   border-color: #00ff88; }
+  57%  { box-shadow: 0 0 12px 4px #00aaff, 0 0 30px 8px #00aaff, 0 0 60px 10px rgba(0,170,255,0.4);   border-color: #00aaff; }
+  71%  { box-shadow: 0 0 12px 4px #aa44ff, 0 0 30px 8px #aa44ff, 0 0 60px 10px rgba(170,68,255,0.4);  border-color: #aa44ff; }
+  85%  { box-shadow: 0 0 12px 4px #ff44cc, 0 0 30px 8px #ff44cc, 0 0 60px 10px rgba(255,68,204,0.4);  border-color: #ff44cc; }
+  100% { box-shadow: 0 0 12px 4px #ff2255, 0 0 30px 8px #ff2255, 0 0 60px 10px rgba(255,34,85,0.4);   border-color: #ff2255; }
 }
 
 @keyframes flipIn {
