@@ -140,6 +140,15 @@
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
+.art {
+  width: calc(100% - 24px);
+  margin: 10px 12px 0;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
 .stats {
   padding: 10px 12px;
   display: flex;

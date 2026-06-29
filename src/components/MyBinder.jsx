@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import CardTile from './CardTile.jsx'
 import styles from './MyBinder.module.css'
+import { shrinkImage } from '../utils/shrinkImage.js'
 
 const TYPES = ['Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Rock', 'Ice', 'Dragon', 'Dark', 'Normal']
 const RARITIES = ['Common', 'Uncommon', 'Rare', 'Ultra Rare']
@@ -9,7 +10,7 @@ const CONDITIONS = ['Mint', 'Near Mint', 'Good', 'Played', 'Worn']
 // Empty form state to reset with
 const EMPTY_FORM = {
   name: '', type: 'Normal', hp: '', rarity: 'Common',
-  condition: 'Mint', quantity: 1, favorite: false,
+  condition: 'Mint', quantity: 1, favorite: false, image: '',
 }
 
 export default function MyBinder({ binder, setBinder }) {
@@ -21,6 +22,13 @@ export default function MyBinder({ binder, setBinder }) {
   function handleChange(e) {
     const { name, value, type, checked } = e.target
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
+  }
+
+  async function handleImageChange(e) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    const dataUrl = await shrinkImage(file)
+    setForm(prev => ({ ...prev, image: dataUrl }))
   }
 
   function handleAdd(e) {
@@ -97,6 +105,19 @@ export default function MyBinder({ binder, setBinder }) {
               <label>Quantity</label>
               <input name="quantity" type="number" min="1" max="99" value={form.quantity} onChange={handleChange} />
             </div>
+          </div>
+          <div className={styles.pictureField}>
+            <label>Picture</label>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            {form.image && (
+              <button
+                type="button"
+                className={styles.clearImageBtn}
+                onClick={() => setForm(prev => ({ ...prev, image: '' }))}
+              >
+                ✕ Remove picture
+              </button>
+            )}
           </div>
           <label className={styles.favCheck}>
             <input name="favorite" type="checkbox" checked={form.favorite} onChange={handleChange} />

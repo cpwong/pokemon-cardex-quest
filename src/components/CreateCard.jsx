@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import styles from './CreateCard.module.css'
+import { shrinkImage } from '../utils/shrinkImage.js'
 
 const TYPES = ['Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Rock', 'Ice', 'Dragon', 'Dark', 'Normal']
 const RARITIES = ['Common', 'Uncommon', 'Rare', 'Ultra Rare']
 
 const EMPTY = {
   name: '', type: 'Fire', hp: 60, attackName: '', attackDamage: 30,
-  rarity: 'Common', description: '',
+  rarity: 'Common', description: '', image: '',
 }
 
 // Type → gradient for the live card preview
@@ -38,6 +39,14 @@ export default function CreateCard({ onSaveToBinder }) {
     const { name, value } = e.target
     setSaved(false)
     setForm(prev => ({ ...prev, [name]: value }))
+  }
+
+  async function handleImageChange(e) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setSaved(false)
+    const dataUrl = await shrinkImage(file)
+    setForm(prev => ({ ...prev, image: dataUrl }))
   }
 
   function handleSave() {
@@ -109,6 +118,19 @@ export default function CreateCard({ onSaveToBinder }) {
             </select>
           </div>
           <div>
+            <label>Picture</label>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            {form.image && (
+              <button
+                type="button"
+                className={styles.clearImageBtn}
+                onClick={() => { setSaved(false); setForm(prev => ({ ...prev, image: '' })) }}
+              >
+                ✕ Remove picture
+              </button>
+            )}
+          </div>
+          <div>
             <label>Description</label>
             <textarea
               name="description"
@@ -156,6 +178,9 @@ export default function CreateCard({ onSaveToBinder }) {
 
           {/* Art area */}
           <div className={styles.artArea}>
+            {form.image ? (
+              <img src={form.image} alt={form.name || 'Card art'} className={styles.artImage} />
+            ) : (
             <div className={styles.artPlaceholder}>
               {form.type === 'Fire' && '🔥'}
               {form.type === 'Water' && '💧'}
@@ -168,6 +193,7 @@ export default function CreateCard({ onSaveToBinder }) {
               {form.type === 'Dark' && '🌑'}
               {form.type === 'Normal' && '⭐'}
             </div>
+            )}
             <span className={styles.typePill}>{form.type}</span>
           </div>
 

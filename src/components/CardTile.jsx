@@ -57,6 +57,11 @@ export default function CardTile({ card, onRemove, onToggleFavorite }) {
         {card.type || 'Normal'}
       </span>
 
+      {/* Card picture (only shown if the card has one) */}
+      {card.image && (
+        <img src={card.image} alt={card.name || 'Card art'} className={styles.art} />
+      )}
+
       {/* Stats */}
       <div className={styles.stats}>
         <div className={styles.stat}>

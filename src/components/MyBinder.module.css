@@ -64,6 +64,27 @@
   margin-bottom: 14px;
 }
 
+.pictureField {
+  margin-bottom: 14px;
+}
+
+.pictureField label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.clearImageBtn {
+  margin-top: 6px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .favCheck {
   display: flex;
   align-items: center;

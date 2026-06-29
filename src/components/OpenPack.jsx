@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import CardTile from './CardTile.jsx'
 import styles from './OpenPack.module.css'
+import { generateCardImage } from '../utils/generateCardImage.js'
 
 // Sample card pool with weighted rarities
 const SAMPLE_CARDS = [
@@ -38,7 +39,9 @@ function drawPack() {
   // Guarantee at least one Uncommon or better in a pack of 5
   const pack = []
   for (let i = 0; i < 5; i++) {
-    pack.push({ ...weightedRandom(SAMPLE_CARDS), id: Date.now() + i + Math.random() })
+    const card = { ...weightedRandom(SAMPLE_CARDS), id: Date.now() + i + Math.random() }
+    // Give each drawn card an auto-generated picture.
+    pack.push({ ...card, image: generateCardImage(card) })
   }
   return pack
 }
